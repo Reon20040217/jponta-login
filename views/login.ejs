@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <label for="id">7桁のID:</label>
+        <input type="text" id="id" name="id" pattern="\d{7}" title="IDは7桁の数字である必要があります" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+    </form>
+    
+</body>
+</html>
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        const id = document.getElementById('id').value.trim();
+        if (!/^\d{7}$/.test(id)) {
+            e.preventDefault();
+            alert('ID must be a 7-digit number.');
+        }
+    });
+</script>
